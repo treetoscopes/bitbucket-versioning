@@ -8,3 +8,7 @@ RUN apk update && apk add --no-cache \
         
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
+
+COPY . .
+
+RUN poetry install
