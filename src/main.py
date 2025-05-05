@@ -40,7 +40,7 @@ def main():
     # Apply version changes
     if args.set_x is not None or args.set_y is not None or args.set_z is not None:
         version_manager.set_version(args.set_x, args.set_y, args.set_z)
-    
+
     if args.increment == "x":
         version_manager.increment_x()
     elif args.increment == "y":
@@ -66,6 +66,6 @@ def main():
 
     return 0
 
+
 if __name__ == "__main__":
     sys.exit(main())
-    

@@ -311,6 +311,21 @@ files = [
 ]
 
 [[package]]
+name = "types-setuptools"
+version = "80.3.0.20250505"
+description = "Typing stubs for setuptools"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "types_setuptools-80.3.0.20250505-py3-none-any.whl", hash = "sha256:117c86a82367306388b55310d04da807ff4c3ecdf769656a5fdc0fdd06a2c1b6"},
+    {file = "types_setuptools-80.3.0.20250505.tar.gz", hash = "sha256:5fd3d34b8fa3441d68d010fef95e232d1e48f3f5cb578f3477b7aae4f8374502"},
+]
+
+[package.dependencies]
+setuptools = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.13.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -343,4 +358,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "647b8249bb2b8d22b540a904284b5a5e9c1a96aee0cd88a0656bee35f47b7f31"
+content-hash = "35ff6c8acb5d7c818c811db5c15160a0983e084697c45826e4ee5518a5ed4c08"

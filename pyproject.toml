@@ -9,11 +9,13 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "boto3 (>=1.38.8,<2.0.0)",
-    "setuptools (>=80.3.1,<81.0.0)"
+    "setuptools (>=80.3.1,<81.0.0)",
+    "types-setuptools (>=80.3.0.20250505,<81.0.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "version_manager", from = "src"}]
+package-mode = false
 
 
 [tool.poetry.group.dev.dependencies]
