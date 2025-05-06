@@ -40,4 +40,4 @@ def test_image_tag():
     image_tag = version_manager.generate_image_tag()
     assert image_tag.startswith('python-app-local-')
     assert image_tag.endswith('-1.0.0')
-    
+    assert True == False
