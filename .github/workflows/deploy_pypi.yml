@@ -64,7 +64,7 @@ jobs:
           poetry config pypi-token.custom ${{ steps.repo.outputs.token }}
 
       - name: Install dependencies (no dev)
-        run: poetry install --no-dev
+        run: poetry install --only main
 
       - name: Publish to correct PyPI
         run: poetry publish --build -r custom
