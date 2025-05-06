@@ -1,0 +1,28 @@
+[project]
+name = "bitbucket-versioing"
+version = "0.1.0"
+description = "version management for deployment pipeline"
+authors = [
+    {name = "Alon Fux",email = "alon.fux@treetoscope.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3 (>=1.38.8,<2.0.0)",
+    "setuptools (>=80.3.1,<81.0.0)",
+    "types-setuptools (>=80.3.0.20250505,<81.0.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "src"}]
+
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+flake8 = "^7.2.0"
+mypy = "^1.15.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
