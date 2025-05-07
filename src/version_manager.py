@@ -24,8 +24,10 @@ DEFAULT_VERSION_FILE = "version.json"
 class VersionManager:
     """Manager for handling semantic versioning across repositories."""
 
-    def __init__(self, storage_type="file", version_file=None,
-                 dynamodb_table=None, s3_bucket=None, s3_prefix=None):
+    def __init__(self, storage_type: str = "file", version_file: str = None,
+                 dynamodb_table: str = None, s3_bucket: str = None, s3_prefix: str = None,
+                 aws_access_key_id: str = None, aws_secret_access_key: str = None,
+                 aws_session_token: str = None):
         """
         Initialize the version manager.
 
@@ -41,6 +43,9 @@ class VersionManager:
         self.dynamodb_table = dynamodb_table
         self.s3_bucket = s3_bucket
         self.s3_prefix = s3_prefix
+        self.aws_access_key_id = aws_access_key_id
+        self.aws_secret_access_key = aws_secret_access_key
+        self.aws_session_token = aws_session_token
 
         # Get repository identifier
         self.repo_id = self._get_repo_identifier()
@@ -93,7 +98,10 @@ class VersionManager:
             raise ValueError("DynamoDB table name is required for DynamoDB storage")
 
         try:
-            dynamodb = boto3.resource('dynamodb')
+            dynamodb = boto3.resource('dynamodb',
+                                      aws_access_key_id=self.aws_access_key_id,
+                                      aws_secret_access_key=self.aws_secret_access_key,
+                                      aws_session_token=self.aws_session_token)
             table = dynamodb.Table(self.dynamodb_table)
             response = table.get_item(Key={'repo_id': self.repo_id})
 
@@ -120,7 +128,11 @@ class VersionManager:
         s3_key = f"{self.s3_prefix or 'versions'}/{self.repo_id}.json"
 
         try:
-            s3 = boto3.client('s3')
+            s3 = boto3.client('s3',
+                              aws_access_key_id=self.aws_access_key_id,
+                              aws_secret_access_key=self.aws_secret_access_key,
+                              aws_session_token=self.aws_session_token)
+
             response = s3.get_object(Bucket=self.s3_bucket, Key=s3_key)
             version_data = json.loads(response['Body'].read().decode('utf-8'))
             logger.info(f"Loaded version from S3: {version_data}")
