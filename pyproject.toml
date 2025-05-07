@@ -1,6 +1,6 @@
 [project]
 name = "bitbucket-versioing"
-version = "0.1.0"
+version = "0.1.2"
 description = "version management for deployment pipeline"
 authors = [
     {name = "Alon Fux",email = "alon.fux@treetoscope.com"}
@@ -8,9 +8,9 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "boto3 (>=1.38.8,<2.0.0)",
-    "setuptools (>=80.3.1,<81.0.0)",
-    "types-setuptools (>=80.3.0.20250505,<81.0.0.0)"
+    "boto3>=1.38.8",
+    "setuptools>=80.3.1",
+    "types-setuptools>=80.3.0.20250505"
 ]
 
 [tool.poetry]
