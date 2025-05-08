@@ -108,6 +108,12 @@ optional arguments:
                         S3 bucket name
   --s3-prefix S3_PREFIX
                         S3 key prefix
+  --aws_access_key_id
+                        aws access key id
+  --aws_secret_access_key
+                        aws secret access key
+  --aws_session_token
+                        aws session token
 ```
 
 ## AWS Permissions
@@ -173,8 +179,8 @@ pipelines:
       - step:
           script:
             - pip install bitbucket-versioning
-            - VERSION=$(version-manager --storage-type dynamodb --dynamodb-table dev-versions --get-version)
-            - version-manager --storage-type dynamodb --dynamodb-table prod-versions --set-x $(echo $VERSION | cut -d. -f1) --set-y $(echo $VERSION | cut -d. -f2) --set-z $(echo $VERSION | cut -d. -f3)
+            - VERSION=$(version-manager --storage-type dynamodb --dynamodb-table dev-versions --aws_access_key_id aws-access-key-id --aws_secret_access_key aws-secret-access-key --aws-session_token-aws_session-token --get-version)
+            - version-manager --storage-type dynamodb --dynamodb-table prod-versions --aws_access_key_id aws-access-key-id --aws_secret_access_key aws-secret-access-key --aws-session_token-aws_session-token --set-x $(echo $VERSION | cut -d. -f1) --set-y $(echo $VERSION | cut -d. -f2) --set-z $(echo $VERSION | cut -d. -f3)
 ```
 
 ### Branch-Based Version Management
@@ -188,12 +194,12 @@ pipelines:
       - step:
           script:
             - pip install bitbucket-versioning
-            - version-manager --storage-type dynamodb --dynamodb-table app-versions --increment y --reset-z
+            - version-manager --storage-type dynamodb --dynamodb-table app-versions --aws_access_key_id aws-access-key-id --aws_secret_access_key aws-secret-access-key --aws-session_token-aws_session-token --increment y --reset-z
     feature/*:
       - step:
           script:
             - pip install bitbucket-versioning
-            - version-manager --storage-type dynamodb --dynamodb-table app-versions --increment z
+            - version-manager --storage-type dynamodb --dynamodb-table app-versions --aws_access_key_id aws-access-key-id --aws_secret_access_key aws-secret-access-key --aws-session_token-aws_session-token --increment z
 ```
 
 ## License

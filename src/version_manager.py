@@ -37,6 +37,9 @@ class VersionManager:
             dynamodb_table (str): DynamoDB table name if using DynamoDB storage
             s3_bucket (str): S3 bucket name if using S3 storage
             s3_prefix (str): S3 key prefix if using S3 storage
+            aws_access_key_id (str): aws access key id
+            aws_secret_access_key (str): aws secret access key
+            aws_session_token (str): aws session token
         """
         self.storage_type = storage_type
         self.version_file = version_file or DEFAULT_VERSION_FILE
